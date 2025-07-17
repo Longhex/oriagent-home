@@ -77,3 +77,9 @@ Feel free to check Astro's [documentation](https://docs.astro.build)
 ---
 Maintained & updated by Bektur Aslan. Contributions welcome.
 # oriagent-home
+
+
+git remote remove origin
+git remote add origin https://github.com/Longhex/oriagent-home.git
+
+git push -u origin main
