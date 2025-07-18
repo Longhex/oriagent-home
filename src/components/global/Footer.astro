@@ -44,14 +44,12 @@ const sections = [
 ];
 ---
 
-<footer
-  class="bg-gradient-to-br from-yellow-50 via-white to-yellow-100 border-base-200">
+<footer class="bg-gradient-to-br from-yellow-50 via-white to-yellow-100 border-base-200">
   <div class="px-6 md:px-12 lg:px-24 py-20 max-w-7xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
       <div class="md:col-span-1">
         <a href="/" class="inline-flex items-center gap-3">
-          <img width="100" src="/logo.svg" alt="logo" />
-         
+          <img width="200" src="/logo.svg" alt="logo" />
         </a>
         <p class="mt-4 text-sm text-gray-500">
           Enterprise AI offerings, a powerful agent platform, and the no-code tools to get value from AI.
@@ -65,10 +63,23 @@ const sections = [
         <p class="text-sm text-gray-500 mb-4">
           Let’s turn your ideas into working AI — fast, secure, and scalable.
         </p>
-        <form class="flex flex-col sm:flex-row items-center gap-3 w-full">
+
+        <form 
+          class="flex flex-col sm:flex-row items-center gap-3 w-full"
+          onsubmit="handleSubmit(event)"
+        >
           <input
+            id="email"
             type="email"
             placeholder="Your email address"
+            required
+            class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+          <input
+            id="phone"
+            type="tel"
+            placeholder="Phone number"
+            required
             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
           />
           <button
@@ -77,23 +88,52 @@ const sections = [
             Subscribe
           </button>
         </form>
+        <p id="formSuccess" class="text-green-600 text-sm mt-2 hidden">Thank you! We’ll be in touch.</p>
       </div>
     </div>
 
-
-
-    <div
-      class="pt-12 mt-12 border-t border-base-200 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
+    <div class="pt-12 mt-12 border-t border-base-200 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
+      <p>&copy; {new Date().getFullYear()} aihive.global. Originally by AHT Tech</p>
       <p>
-        &copy; {new Date().getFullYear()} aihive.global. Originally by AHT Tech
-      </p>
-      <p>
-        Additionally Development by <a
-          href="https://chatx.vn/"
-          class="underline text-blue-600 hover:text-blue-800">
-          Chatx
-        </a>
+        Additionally Development by 
+        <a href="https://chatx.vn/" class="underline text-blue-600 hover:text-blue-800">Chatx</a>
       </p>
     </div>
   </div>
+
+  <script is:inline>
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+
+      const content = `New Contact\\nEmail: ${email}\\nPhone: ${phone}`;
+
+      try {
+        await fetch("https://open.larksuite.com/open-apis/bot/v2/hook/e7acceee-c057-402f-9cad-974088e29d3b", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            msg_type: "text",
+            content: {
+              text: content,
+            },
+          }),
+        });
+
+        // Hiển thị thông báo thành công
+        document.getElementById("formSuccess").classList.remove("hidden");
+
+        // Reset form
+        document.getElementById("email").value = "";
+        document.getElementById("phone").value = "";
+
+      } catch (error) {
+        alert("There was an error submitting the form. Please try again later.");
+        console.error(error);
+      }
+    }
+  </script>
 </footer>
