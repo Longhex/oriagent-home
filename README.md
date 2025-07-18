@@ -79,7 +79,9 @@ Maintained & updated by Bektur Aslan. Contributions welcome.
 # oriagent-home
 
 
-git remote remove origin
-git remote add origin https://github.com/Longhex/oriagent-home.git
-
-git push -u origin main
+git init                               
+git remote add origin https://github.com/username/repo.git 
+git add .                             
+git commit -m "Initial commit"       
+git branch -M main                      
+git push -u origin main  

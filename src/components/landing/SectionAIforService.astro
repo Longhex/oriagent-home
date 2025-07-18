@@ -160,13 +160,21 @@
           </a>
         </div>
       </div>
-      <div class="lg:col-span-2">
-        <img
-          class="object-cover h-full ring-4 ring-base-50 border border-base-200 rounded-2xl"
-          src="/aiforservice.webp"
-          alt="#_"
-        />
-      </div>
+  <div class="lg:col-span-2">
+    <video
+      class="object-cover h-full ring-base-50 border border-base-200 rounded-2xl cursor-pointer"
+      src="/aiforservice.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+      @click="showPopup = true"
+    ></video>
+  </div>
+
+
+
+      
     </div>
    
   </div>

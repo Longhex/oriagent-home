@@ -163,13 +163,36 @@
           </a>
         </div>
       </div>
-      <div class="lg:col-span-2">
-        <img
-          class="object-cover h-full ring-4 ring-base-50 border border-base-200 rounded-2xl"
-          src="/aiforworkflow.png"
-          alt="#_"
-        />
-      </div>
+
+    <div class="lg:col-span-2">
+  <video
+    class="object-cover h-full ring-4 ring-base-50 border border-base-200 rounded-2xl cursor-pointer"
+    src="/aiforworkflow.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    onclick="showPopup('/aiforworkflow.mp4')"
+  ></video>
+</div>
+
+<!-- Popup container -->
+<div
+  id="videoPopup"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-sm"
+  onclick="hidePopup()"
+>
+  <video
+    id="popupVideo"
+    class="rounded-[40px] max-w-[90vw] max-h-[90vh]"
+    controls
+    autoplay
+  ></video>
+</div>
+
+
+
+
     </div>
    
   </div>
