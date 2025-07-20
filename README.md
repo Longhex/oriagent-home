@@ -78,6 +78,7 @@ Feel free to check Astro's [documentation](https://docs.astro.build)
 Maintained & updated by Bektur Aslan. Contributions welcome.
 # oriagent-home
 
+Chạy: npm run dev      
 
 git init                               
 git remote add origin https://github.com/username/repo.git 
